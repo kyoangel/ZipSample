@@ -20,7 +20,7 @@ namespace ZipSample.test
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
-        private IEnumerable<int> MyOfType(ArrayList source)
+        private IEnumerable<int> MyOfType(IEnumerable source)
         {
             throw new NotImplementedException();
         }
