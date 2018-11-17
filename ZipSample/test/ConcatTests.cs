@@ -9,18 +9,6 @@ namespace ZipSample.test
 	public class ConcatTests
 	{
 		[TestMethod]
-		public void concat_integers()
-		{
-			var first = new int[] { 1, 3, 5 };
-			var second = new int[] { 2, 4, 6 };
-
-			var actual = first.MyConcat(second);
-
-			var expected = new int[] { 1, 3, 5, 2, 4, 6 };
-			expected.ToExpectedObject().ShouldEqual(actual.ToArray());
-		}
-
-		[TestMethod]
 		public void concat_employee()
 		{
 			var first = new List<Employee>
@@ -33,7 +21,7 @@ namespace ZipSample.test
 				new Employee() {Id = 3, Name = "Tom"},
 			};
 
-			var actual = first.MyConcat(second);
+			var actual = MyConcat(first, second);
 
 			var expected = new List<Employee>
 			{
@@ -42,6 +30,28 @@ namespace ZipSample.test
 				new Employee() {Id = 3, Name = "Tom"},
 			};
 			expected.ToExpectedObject().ShouldEqual(actual.ToList());
+		}
+
+		[TestMethod]
+		public void concat_integers()
+		{
+			var first = new int[] {1, 3, 5};
+			var second = new int[] {2, 4, 6};
+
+			var actual = MyConcat(first, second);
+
+			var expected = new int[] {1, 3, 5, 2, 4, 6};
+			expected.ToExpectedObject().ShouldEqual(actual.ToArray());
+		}
+
+		private IEnumerable<Employee> MyConcat(IEnumerable<Employee> first, IEnumerable<Employee> second)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		private IEnumerable<int> MyConcat(IEnumerable<int> first, IEnumerable<int> second)
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }
