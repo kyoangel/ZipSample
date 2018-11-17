@@ -1,28 +1,22 @@
 ﻿using ExpectedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ZipSample.test
 {
-    [TestClass]
-    public class OfTypeTests
-    {
-        [TestMethod]
-        public void pick_integer_from_ArrayList()
-        {
-            var arrayList = new ArrayList { 2, "4", 6 };
-            var actual = MyOfType(arrayList).ToList();
+	[TestClass]
+	public class OfTypeTests
+	{
+		[TestMethod]
+		public void pick_integer_from_ArrayList()
+		{
+			var arrayList = new ArrayList { 2, "a", 6 };
+			var actual = arrayList.MyOfType<int>().ToList();
 
-            var expected = new List<int> { 2, 6 };
-            expected.ToExpectedObject().ShouldEqual(actual);
-        }
-
-        private IEnumerable<int> MyOfType(ArrayList source)
-        {
-            throw new NotImplementedException();
-        }
-    }
+			var expected = new List<int> { 2, 6 };
+			expected.ToExpectedObject().ShouldEqual(actual);
+		}
+	}
 }

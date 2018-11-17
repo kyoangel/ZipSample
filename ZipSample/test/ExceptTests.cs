@@ -5,24 +5,43 @@ using System.Linq;
 
 namespace ZipSample.test
 {
-    [TestClass]
-    public class ExceptTests
-    {
-        [TestMethod]
-        public void Except_integers()
-        {
-            var first = new List<int> { 1, 3, 5, 4 };
-            var second = new List<int> { 5, 3, 7, 9 };
+	[TestClass]
+	public class ExceptTests
+	{
+		[TestMethod]
+		public void Except_integers()
+		{
+			var first = new List<int> { 1, 4, 3, 5, 4 };
+			var second = new List<int> { 5, 3, 7, 9 };
 
-            var expected = new List<int> { 1, 4 };
+			var expected = new List<int> { 1, 4 };
 
-            var actual = MyExcept(first, second).ToList();
-            expected.ToExpectedObject().ShouldEqual(actual);
-        }
+			var actual = first.MyExcept(second).ToList();
+			expected.ToExpectedObject().ShouldEqual(actual);
+		}
 
-        private IEnumerable<int> MyExcept(IEnumerable<int> first, IEnumerable<int> second)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+		[TestMethod]
+		public void Except_Girl()
+		{
+			var first = new List<Girl>
+			{
+				new Girl(){Name="Amanda"},
+				new Girl(){Name="Lucy"}
+			};
+
+			var second = new List<Girl>
+			{
+				new Girl(){Name="Lucy"},
+				new Girl(){Name="Xinyi"},
+			};
+
+			var expected = new List<Girl>
+			{
+				new Girl(){Name="Amanda"}
+			};
+
+			var actual = first.MyExcept(second, new GirlEqualityComparer()).ToList();
+			expected.ToExpectedObject().ShouldEqual(actual);
+		}
+	}
 }
